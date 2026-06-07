@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Crisis | Denilson</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="banner-container">
+            <img src="img/banner-crisis.jpg" alt="Crisis economica" class="banner-img">
+            <div class="banner-texto">
+                <h1>Simulador de Crisis Familiar</h1>
+                <p>Abastecimiento, precios y poder adquisitivo</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#simuladores">Simuladores</a>
+        <a href="#casos">Casos de Estudio</a>
+    </nav>
+
+    <main id="inicio">
+        <section class="contexto">
+            <h2>Contexto</h2>
+            <div class="contexto-contenido">
+                <img src="img/dinero-icon.jpg" alt="Perdida economica" class="icono-lateral-grande">
+                <p>En Bolivia, la escasez de combustible, el aumento de precios y la perdida del poder adquisitivo afectan a las familias. Este simulador ayuda a calcular estos problemas. Ingrese sus datos en los campos y presione Calcular.</p>
+            </div>
+        </section>
+
+        <section id="simuladores">
+            <h2>Simuladores</h2>
+
+            <div id="simulador1" class="simulador">
+                <div class="simulador-header">
+                    <img src="img/combustible-icon.jpg" alt="Combustible" class="imagen-lateral-simulador">
+                    <div class="simulador-contenido">
+                        <h3>Abastecimiento de Carburante</h3>
+                        <p class="ayuda">Ingrese la cantidad de combustible en litros y el consumo diario.</p>
+                        <label>Reserva inicial (litros):</label>
+                        <input type="number" id="reserva" step="any" placeholder="Ejemplo: 10000">
+                        <label>Consumo diario (litros):</label>
+                        <input type="number" id="consumo" step="any" placeholder="Ejemplo: 1200">
+                        <label>Reabastecimiento diario (litros):</label>
+                        <input type="number" id="reabastece" step="any" placeholder="Ejemplo: 300">
+                        <label>Nivel critico (litros):</label>
+                        <input type="number" id="critico" step="any" placeholder="Ejemplo: 2000">
+                        <div class="botones">
+                            <button onclick="calcularCarburante()">Calcular</button>
+                            <button onclick="limpiar('resultado1')">Limpiar</button>
+                        </div>
+                        <div id="resultado1" class="resultado"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="simulador2" class="simulador">
+                <div class="simulador-header">
+                    <img src="img/compras-icon.jpg" alt="Compras" class="imagen-lateral-simulador">
+                    <div class="simulador-contenido">
+                        <h3>Presupuesto Familiar</h3>
+                        <p class="ayuda">Ingrese su presupuesto y los precios de los productos que desea comprar.</p>
+                        <label>Presupuesto total (bolivianos):</label>
+                        <input type="number" id="presupuesto" step="any" placeholder="Ejemplo: 500">
+                        <label>Precio Arroz (bolivianos):</label>
+                        <input type="number" id="precioArroz" step="any" placeholder="Ejemplo: 11">
+                        <label>Cantidad Arroz:</label>
+                        <input type="number" id="cantArroz" step="any" placeholder="Ejemplo: 10">
+                        <label>Precio Papa (bolivianos):</label>
+                        <input type="number" id="precioPapa" step="any" placeholder="Ejemplo: 10">
+                        <label>Cantidad Papa:</label>
+                        <input type="number" id="cantPapa" step="any" placeholder="Ejemplo: 8">
+                        <label>Precio Aceite (bolivianos):</label>
+                        <input type="number" id="precioAceite" step="any" placeholder="Ejemplo: 18">
+                        <label>Cantidad Aceite:</label>
+                        <input type="number" id="cantAceite" step="any" placeholder="Ejemplo: 4">
+                        <div class="botones">
+                            <button onclick="calcularCompras()">Calcular</button>
+                            <button onclick="limpiar('resultado2')">Limpiar</button>
+                        </div>
+                        <div id="resultado2" class="resultado"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="simulador3" class="simulador">
+                <div class="simulador-header">
+                    <img src="img/dinero-icon.jpg" alt="Poder adquisitivo" class="imagen-lateral-simulador">
+                    <div class="simulador-contenido">
+                        <h3>Perdida del Poder Adquisitivo</h3>
+                        <p class="ayuda">Compare sus gastos anteriores con los actuales para ver la perdida.</p>
+                        <label>Ingreso mensual (bolivianos):</label>
+                        <input type="number" id="ingreso" step="any" placeholder="Ejemplo: 2500">
+                        <label>Gasto anterior (bolivianos):</label>
+                        <input type="number" id="gastoAntes" step="any" placeholder="Ejemplo: 2000">
+                        <label>Gasto actual (bolivianos):</label>
+                        <input type="number" id="gastoAhora" step="any" placeholder="Ejemplo: 2800">
+                        <div class="botones">
+                            <button onclick="calcularPoder()">Calcular</button>
+                            <button onclick="limpiar('resultado3')">Limpiar</button>
+                        </div>
+                        <div id="resultado3" class="resultado"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="casos">
+            <h2>Casos de Estudio para Probar</h2>
+            <p class="ayuda-casos">Haga clic en "Probar Caso" para cargar datos de ejemplo y ver el funcionamiento del simulador. La pagina se desplazara automaticamente al simulador correspondiente.</p>
+            <div class="casos">
+                <div class="caso-item">
+                    <img src="img/combustible-icon.jpg" alt="Caso combustible" class="imagen-caso-grande">
+                    <p><strong>Caso Carburante:</strong> 10000 litros inicial, 1200 litros consumo, 300 litros reabastecimiento, 2000 litros critico</p>
+                    <button onclick="cargarCaso1()">Probar Caso</button>
+                </div>
+                <div class="caso-item">
+                    <img src="img/compras-icon.jpg" alt="Caso compras" class="imagen-caso-grande">
+                    <p><strong>Caso Compras:</strong> Presupuesto 500 bolivianos, Arroz 11 Bs x10, Papa 10 Bs x8, Aceite 18 Bs x4</p>
+                    <button onclick="cargarCaso2()">Probar Caso</button>
+                </div>
+                <div class="caso-item">
+                    <img src="img/dinero-icon.jpg" alt="Caso poder" class="imagen-caso-grande">
+                    <p><strong>Caso Poder:</strong> Ingreso 2500 bolivianos, Gasto antes 2000 Bs, Gasto actual 2800 Bs</p>
+                    <button onclick="cargarCaso3()">Probar Caso</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusiones">
+            <h2>Conclusiones</h2>
+            <div class="conclusion-contenido">
+                <img src="img/alerta-icon.jpg" alt="Alerta" class="icono-lateral-grande">
+                <p>La inflacion y la escasez afectan directamente la economia familiar. Este simulador ayuda a visualizar el impacto y tomar mejores decisiones. Utilice los casos de estudio para entender como funciona cada simulador.</p>
+            </div>
+            <p><strong>Desarrollado por:</strong> Denilson Ruben Ceron Huanca - Programacion Web I</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright 2025 Denilson Ceron | Proyecto Educativo</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
